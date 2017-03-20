@@ -1,0 +1,27 @@
+<div class="">
+    {{#if error}}
+      <p>{{error}}</p>
+    {{/if}}
+    {{#if login}}
+    <form class="" action="/login"}} method="post">
+    {{else}}
+    <form class="" action="/register"}} method="post">
+    {{/if}}
+      <fieldset>
+        {{#if login}}
+        <legend>Login</legend>
+        {{else}}
+        <legend>Register</legend>
+        {{/if}}
+        <label for="username">Username</label>
+        <input id="username" type="text" name="username" placeholder="username">
+        <label for="password">Password</label>
+        <input id="password" type="text" name="password" placeholder="password">
+         {{#if login}} 
+         <button type="submit" class="">Log In</button>
+         {{else}}
+        <button type="submit" class="">Register</button>
+        {{/if}}
+      </fieldset>
+    </form>
+  </div>
