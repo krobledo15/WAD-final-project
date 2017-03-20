@@ -9,22 +9,33 @@ const router = express.Router()
 const passport = require('passport')
 const localStrategy = require('passport-local').Strategy
 const flash = require('connect-flash')
+const cookieParser = require('cookie-parser')
+const session = require('express-session')
 
 // mongoose.connect('mongodb://localhost/FinalProject')
 
 //Configure Server
-app.configure(function() {
-    app.use(express.static(path.join(__dirname, 'public')))
-    app.use(express.cookieParser())
-    app.use(express.bodyParser())
-    app.use(bodyParser.urlencoded({ extended: false }))
-    app.use(bodyParser.json())
-    app.use(express.session({ secret: 'keyboard cat' }))
-    app.use(passport.initialize())
-    app.use(passport.session())
-    app.use(router)
-    app.use(flash)
-})
+/**
+ * Cesar: Aqui tenias una function llamada app.configure, esta function ya no se usa, puedes
+ * poner tu app.use fuera de esta function
+ * 
+ * Cesar: En Express, ya no esta incluido en el framework cosas como body-parser, cookie-parser y session,
+ * tienes que instalarlo manualmente con los siguientes comandos:
+ * 
+ * npm install --save cookie-parser experss-session body-parser
+ * 
+ * Cesar: En la documentación de passportjs esto no esta claro, pero tengo la versión actualizada en el ejemplo
+ * del libro de la clase
+ */
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(cookieParser())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use(session({ secret: 'keyboard cat' }))
+app.use(passport.initialize())
+app.use(passport.session())
+app.use(router)
+app.use(flash)
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('views', path.join(__dirname, 'views'))
