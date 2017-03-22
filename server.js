@@ -11,22 +11,13 @@ const localStrategy = require('passport-local').Strategy
 const flash = require('connect-flash')
 const cookieParser = require('cookie-parser')
 const session = require('express-session')
+const AWS = require('aws-sdk')
+const multer = require('multer')
+const storage = multer.memoryStorage()
+const upload = multer({ storage: storage })
 
 // mongoose.connect('mongodb://localhost/FinalProject')
 
-//Configure Server
-/**
- * Cesar: Aqui tenias una function llamada app.configure, esta function ya no se usa, puedes
- * poner tu app.use fuera de esta function
- * 
- * Cesar: En Express, ya no esta incluido en el framework cosas como body-parser, cookie-parser y session,
- * tienes que instalarlo manualmente con los siguientes comandos:
- * 
- * npm install --save cookie-parser experss-session body-parser
- * 
- * Cesar: En la documentación de passportjs esto no esta claro, pero tengo la versión actualizada en el ejemplo
- * del libro de la clase
- */
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -34,8 +25,8 @@ app.use(bodyParser.json())
 app.use(session({ secret: 'keyboard cat' }))
 app.use(passport.initialize())
 app.use(passport.session())
-app.use(router)
-app.use(flash)
+    //app.use(router)
+    //app.use(flash)
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('views', path.join(__dirname, 'views'))
@@ -117,19 +108,45 @@ app.get('/upload', function(req, res) {
 
 })
 
-app.post('/upload', function(req, res) {
+//Upload function - uploads CSV files to AWS S3 bucket
+app.post('/upload', upload.single('data'), function(req, res) {
+    console.log(req.file)
+        //AWS secret access keys
+    aws_access_key_id = AKIAIXPI5U6MTQ6EWYFQ
+    aws_secret_access_key = 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
 
+    let s3 = new AWS.S3()
+    let myBucket = 'wad-finalproject-app-uploads'
+    let myKey = 'AKIAIXPI5U6MTQ6EWYFQ'
+
+    s3.createBucket({ Bucket: myBucket }, function(err, data) {
+        if (err) {
+            console.log(err)
+
+        } else {
+
+            params = { Bucket: myBucket, Key: myKey, Body: 'Hello!' };
+
+            s3.putObject(params, function(err, data) {
+
+                if (err) {
+
+                    console.log(err)
+
+                } else {
+
+                    console.log("Successfully uploaded data to myBucket/myKey");
+
+                }
+
+            })
+
+        }
+
+    })
 })
 
 
-
-
-function handleRequest(req, res) {
-    return res.end('Server is running!!');
-}
-
-var server = http.createServer(handleRequest);
-
-server.listen(3000, function() {
+app.listen(3000, function() {
     console.log('Server listening on port 3000');
 });
