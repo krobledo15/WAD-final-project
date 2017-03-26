@@ -2,6 +2,4 @@ node_modules/
 
 .DS_Store
 
-//AWS secret access keys
-    aws_access_key_id = AKIAIZUPD5IITORJVAHQ
-    aws_secret_access_key = zfTs9IGxEeMfOZBygTxVWE0hPw / CtEeYp / cTFTdy
+/tmp/uploads/
