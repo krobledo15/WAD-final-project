@@ -10,6 +10,7 @@
   "author": "Karina Robledo",
   "license": "ISC",
   "dependencies": {
+    "babyparse": "^0.4.6",
     "body-parser": "^1.17.1",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
