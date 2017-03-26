@@ -99,77 +99,77 @@ router.post('/upload', upload.single('data'), function(req, res) {
     console.log(req.file)
 })
 
-//CSV to JSON
-//generating csv strings & JS objects
-let generator = generate()
-generator.on('readable', function() {
-    while (d = generator.read()) {
-        data.push(d)
-    }
-})
-generator.on('error', function(err) {
-    console.log(err);
-})
-generator.on('end', function() {
-    data.should.eql()
-})
+// //CSV to JSON
+// //generating csv strings & JS objects
+// let generator = generate()
+// generator.on('readable', function() {
+//     while (d = generator.read()) {
+//         data.push(d)
+//     }
+// })
+// generator.on('error', function(err) {
+//     console.log(err);
+// })
+// generator.on('end', function() {
+//     data.should.eql()
+// })
 
-//Parsing CSV
-let parser = parse({ delimiter: ':' })
+// //Parsing CSV
+// let parser = parse({ delimiter: ':' })
 
-parser.on('readable', function() {
-    while (record = parser.read()) {
-        output.push(record)
-    }
-})
-parser.on('error', function(err) {
-    console.log(err)
-})
-parser.on('finish', function() {
-    output.should.eql()
+// parser.on('readable', function() {
+//     while (record = parser.read()) {
+//         output.push(record)
+//     }
+// })
+// parser.on('error', function(err) {
+//     console.log(err)
+// })
+// parser.on('finish', function() {
+//     output.should.eql()
 
-})
-parser.write()
-parser.write()
-parser.end()
+// })
+// parser.write()
+// parser.write()
+// parser.end()
 
-//Transform CSV
-let transformer = Transform(function(data) {
-    data.push(data.shift())
-    return data
-});
-transformer.on('readable', function() {
-    while (row = transformer.read()) {
-        output.push(row)
-    }
-})
-transformer.on('error', function(err) {
-    console.log(err.message)
-})
-transformer.on('finish', function() {
-    output.should.eql([])
-})
-transformer.write()
-transformer.write()
-transformer.end()
+// //Transform CSV
+// let transformer = Transform(function(data) {
+//     data.push(data.shift())
+//     return data
+// });
+// transformer.on('readable', function() {
+//     while (row = transformer.read()) {
+//         output.push(row)
+//     }
+// })
+// transformer.on('error', function(err) {
+//     console.log(err.message)
+// })
+// transformer.on('finish', function() {
+//     output.should.eql([])
+// })
+// transformer.write()
+// transformer.write()
+// transformer.end()
 
-//Stringyfy CSV
-let stringData = ''
-stringifier = stringify({ delimiter: ':' })
-stringifier.on('readable', function() {
-    while (row = stringifier.read()) {
-        stringData += row
-    }
-})
-stringifier.on('error', function(err) {
-    console.log(err.message)
-})
-stringifier.on('finish', function() {
-    stringData.should.eql()
-})
-stringifier.write()
-stringifier.write()
-stringifier.end()
+// //Stringyfy CSV
+// let stringData = ''
+// stringifier = stringify({ delimiter: ':' })
+// stringifier.on('readable', function() {
+//     while (row = stringifier.read()) {
+//         stringData += row
+//     }
+// })
+// stringifier.on('error', function(err) {
+//     console.log(err.message)
+// })
+// stringifier.on('finish', function() {
+//     stringData.should.eql()
+// })
+// stringifier.write()
+// stringifier.write()
+// stringifier.end()
 
 
 
@@ -179,21 +179,21 @@ module.exports = router
 
 // let converter = csv()
 // csv()
-//     converter.fromStream(csvReadStream)
-//     converter.on('csv', (csvRow, rowIndex) => {
-//         // csvRow is an array
-//         //rowIndex is the row number of csv line
-//     })
-//     converter.on('data', (data) => {
-//         //data is a buffer getObject
-//         const jsonStr = data.toString('utf8')
-//     })
-//     converter.on('error', (err) => {
-//         console.log(err)
-//     })
-//     converter.on('done', (error) => {
-//         console.log('Parsing complete!')
-//     })
+// converter.fromStream(csvReadStream)
+// converter.on('csv', (csvRow, rowIndex) => {
+//     // csvRow is an array
+//     //rowIndex is the row number of csv line
+// })
+// converter.on('data', (data) => {
+//     //data is a buffer getObject
+//     const jsonStr = data.toString('utf8')
+// })
+// converter.on('error', (err) => {
+//     console.log(err)
+// })
+// converter.on('done', (error) => {
+//     console.log('Parsing complete!')
+// })
 
 
 
