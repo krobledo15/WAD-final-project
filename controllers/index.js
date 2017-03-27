@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const User = require('../models/user.js')
 const Data = require('../models/data.js')
+const BizData = require('../models/bizdata.js')
 const passport = require('passport')
 const multer = require('multer')
 const path = require('path')
@@ -60,10 +61,10 @@ router.post('/login',
 
 //Dashboard View
 router.get('/dashboard', protect, function(req, res) {
-    res.send('Worked')
-})
-
-//Log Out Button
+        res.status(200).send('Worked')
+    })
+    // res.send('Worked')
+    //Log Out Button
 router.get('/logout', function(req, res) {
     req.logout()
     return res.redirect('/landing')
@@ -85,17 +86,22 @@ router.get('/upload', protect, function(req, res) {
     return res.render('upload')
 })
 
-//Upload functionality
+//Upload functionality && Parse Data
 //req.file -> is going to represent the uploaded File buffer
 router.post('/upload', upload.single('data'), function(req, res) {
-    console.log(req.file)
-})
+    let parsedData = Baby.parseFiles(req.file.path, {
+            header: true
+        })
+        // console.log(parsedData)
+        // res.status(200)
 
-let parsedData = Baby.parseFiles(req.file.path, {
-    header: true
+    parsedData.save(function(err) {
+        if (err) { console.log(err) } else {
+            res.redirect('/reports');
+        }
+    })
+
 })
-console.log(parsedData)
-res.send(200)
 
 
 module.exports = router
