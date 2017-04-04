@@ -38,6 +38,7 @@ router.get('/landing', function(req, res) {
 })
 
 router.post('/register', function(req, res) {
+    console.log('post register')
     console.log(req.body)
     let user = new User(req.body)
     user.save(function(err) {
