@@ -35,21 +35,21 @@
         esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
         culpa qui officia deserunt mollit anim id est laborum."</p>
     </article>
-            <form class="sign-up" action="#">
+            <form class="sign-up" action="/register" method="post">
                 <div class="form__group">
-                    <input type="text" placeholder="Company Name" class="form__input" />
+                    <input type="text" name="companyName" placeholder="Company Name" class="form__input" />
                 </div>
                 <div class="form__group">
-                    <input type="text" placeholder="Your Name" class="form__input" />
+                    <input type="text" name="name" placeholder="Your Name" class="form__input" />
                 </div>
                 <div class="form__group">
-                    <input type="email" placeholder="Email" class="form__input" />
+                    <input type="email" name="email" placeholder="Email" class="form__input" />
                 </div>
                 <div class="form__group">
-                    <input type="password" placeholder="Password" class="form__input" />
+                    <input type="password" name="password" placeholder="Password" class="form__input" />
                 </div>
         
-                <button id="register-button" href="/dashboard" type="submit" class="btn btn-sm btn-light" value="login" action="/dashboard" method="post">Sign Up</button>
+                <button id="register-button" type="submit" class="btn btn-sm btn-light" value="login">Sign Up</button>
               
             </form>
         </div>
