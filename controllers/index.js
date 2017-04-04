@@ -34,7 +34,6 @@ router.get('/', function(req, res) {
 
 //Register && Login
 router.get('/landing', function(req, res) {
-    console.log('here')
     return res.render('landing')
 })
 
@@ -60,7 +59,7 @@ router.post('/login',
 )
 
 //Dashboard View- ADD protect, BEFORE FUNCTION
-router.get('/dashboard', function(req, res) {
+router.get('/dashboard', protect, function(req, res) {
     return res.render('dashboard')
     res.status(200).send('Worked')
 })
@@ -78,25 +77,26 @@ router.get('/logout', function(req, res) {
 // })
 
 //Selecting A Pre-Existing File On Dashboard - ADD protect, BEFORE FUNCTION
-router.get('/file/:id', function(req, res) {
+router.get('/file/:id', protect, function(req, res) {
     let id = req.params.id
     return res.render('/file/:id')
 })
 
 // Reports View
-router.get('/reports', function(req, res) {
+router.get('/reports', protect, function(req, res) {
     return res.render('reports')
 })
 
 //Upload View- ADD protect, BEFORE FUNCTION
-router.get('/upload', function(req, res) {
+router.get('/upload', protect, function(req, res) {
     return res.render('upload')
         // return res.sendFile(__dirname + '/upload')
 })
 
 //Upload functionality && Parse Data
 //req.file -> is going to represent the uploaded File buffer
-router.post('/upload', upload.single('data'), function(req, res) {
+router.post('/upload', protect, upload.single('data'), function(req, res) {
+    console.log(req.user)
     let parsedData = Baby.parseFiles(req.file.path, {
         header: true
     })
@@ -105,8 +105,8 @@ router.post('/upload', upload.single('data'), function(req, res) {
     let data = new Data({
         filename: req.file.filename,
         filetype: req.body.filetype,
-        reportName: req.body.reportName,
-        userID: 'req.user._id', //This is a placeholder, replace with ACTUAL user id which is passed by passport
+        reportname: req.body.filename,
+        userID: req.user.id, //This is a placeholder, replace with ACTUAL user id which is passed by passport
         contents: parsedData.data
     })
 
@@ -119,7 +119,7 @@ router.post('/upload', upload.single('data'), function(req, res) {
 })
 
 // Reports View
-router.get('/reports', function(req, res) {
+router.get('/reports', protect, function(req, res) {
     req('data')
     return res.render('/reports')
 })

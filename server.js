@@ -64,8 +64,6 @@ passport.deserializeUser(function(id, callback) {
 //Login
 passport.use(new localStrategy(
     function(username, password, callback) {
-        console.log(username)
-        console.log(password)
         User.findOne({
             email: username
         }, function(err, user) {

@@ -8,11 +8,11 @@ const dataSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    reportName: {
+    reportname: {
         type: String,
         required: true
     },
-    userID: {
+    userid: {
         type: String,
         required: true
     },
