@@ -38,15 +38,10 @@ router.get('/landing', function(req, res) {
 })
 
 router.post('/register', function(req, res) {
-    console.log('post register')
-    console.log(req.body)
     let user = new User(req.body)
     user.save(function(err) {
         if (err) {
-            console.log(err)
-            return res.render('landing', {
-                error: err
-            })
+            return res.render('landing', { error: err })
         }
         return res.redirect('/dashboard')
     })
@@ -107,12 +102,12 @@ router.post('/upload', protect, upload.single('data'), function(req, res) {
         filename: req.file.filename,
         filetype: req.body.filetype,
         reportname: req.body.filename,
-        userID: req.user.id, //This is a placeholder, replace with ACTUAL user id which is passed by passport
+        userid: req.user._id, //This is a placeholder, replace with ACTUAL user id which is passed by passport
         contents: parsedData.data
     })
 
     data.save(function(err) {
-        if (err) {
+        if (err && Object.keys(err).length > 0) {
             return res.json({ status: 400, error: err })
         }
         return res.redirect('/reports')
