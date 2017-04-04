@@ -1,0 +1,209 @@
+#container {
+    min-height: 100%;
+    position: relative;
+}
+
+
+/*................................................Navigation Bar///////////////////////////////////////// */
+
+#dashboard .navbar {
+    background-color: transparent;
+    background: transparent;
+    border-color: transparent;
+}
+
+#dashboard .nav {
+    display: inline;
+}
+
+#dashboard .navbar-brand {
+    padding: 6px 15px;
+    width: 1235px;
+    height: 100%;
+}
+
+#dashboard .navbar-brand img {
+    width: 4%;
+    float: left;
+}
+
+
+/*#dashboard .navbar-brand>img {
+    display: block;
+    height: 100%;
+}*/
+
+#dashboard .navbar-brand>img {
+    display: inline;
+}
+
+#dashboard .FlexEmbed {
+    display: block;
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background-size: cover;
+    background-color: black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+    position: relative;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+#logout-button,
+#upload-button {
+    outline: 0;
+}
+
+
+/*................................................Header Section///////////////////////////////////////// */
+
+.header-section {
+    background-image: url(/img/dashboard-hand.jpg);
+}
+
+.header-section {
+    width: 100%;
+    height: calc(100vh - 50px);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*margin-top: 50px;*/
+}
+
+
+/* Use the following for All pages except index*/
+
+.-short {
+    height: calc(50vh - 50px);
+}
+
+
+/*................................................Body///////////////////////////////////////// */
+
+#admin h1 {
+    padding-left: 50px;
+}
+
+
+/*................................................Button Cloud///////////////////////////////////////// */
+
+#upload-button {
+    font-size: 15px;
+    color: #FFF;
+    padding: 15px 40px;
+    cursor: pointer;
+    background-color: #1abc9c;
+    opacity: 1;
+    border-radius: 30px;
+    border-color: transparent;
+    display: inline;
+    text-align: left;
+    position: relative;
+    /*margin: auto;*/
+    float: right;
+    margin-right: 100px;
+    outline: 0;
+}
+
+.content {
+    text-align: justify;
+    margin: 0 auto;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-bottom: 0;
+    margin-top: 0px;
+    /*margin: 60px auto;*/
+    display: block;
+    width: 900px;
+}
+
+.block {
+    width: 17%;
+    float: left;
+    margin: 15px 0;
+}
+
+.button {
+    font-size: 15px;
+    color: #FFF;
+    padding: 15px 40px;
+    cursor: pointer;
+    background-color: #1abc9c;
+    opacity: 1;
+    border-radius: 30px;
+    display: inline;
+    text-align: left;
+    position: relative;
+    margin: auto;
+}
+
+.button i {
+    font-size: 15px;
+    position: relative;
+    top: 0px;
+    transition: all 0.2s ease-out;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    opacity: 0;
+    margin-left: 0px;
+    width: 0px;
+}
+
+.button:hover i {
+    opacity: 1;
+    margin-left: 10px;
+    width: auto;
+}
+
+.turquoise {
+    background: #1abc9c;
+}
+
+.emerald {
+    background: #2ecc71;
+}
+
+.blue {
+    background: #3498db;
+}
+
+.amethyst {
+    background: #9b59b6;
+    font-size: 13px;
+}
+
+.asphalt {
+    background: #34495e;
+}
+
+.sun {
+    background: #f1c40f;
+}
+
+.carrot {
+    background: #e67e22;
+}
+
+.alizarin {
+    background: #e74c3c;
+    font-size: 13px;
+}
+
+.concrete {
+    background: #95a5a6;
+}
+
+h2 {
+    margin-left: 250px;
+}

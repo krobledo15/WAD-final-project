@@ -1,5 +1,198 @@
-    /*Navbar*/
-    
-    ul>.pure-menu-horizontal .pure-menu-list {
-        float: right;
-    }
+                        /*loading the roboto font from google fonts*/
+                        
+                        @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+                        /* Background image - for colorful setings.png use 'bottom right' */
+                        
+                        .bg {
+                            height: 590px;
+                            background: url(/img/settings.png) bottom right;
+                            background-repeat: no-repeat;
+                            /*background-size: cover;*/
+                        }
+                        /* Navbar */
+                        
+                        .navbar {
+                            background-color: transparent;
+                            background: transparent;
+                            border-color: transparent;
+                        }
+                        
+                        .nav {
+                            display: inline;
+                        }
+                        
+                        .navbar-brand {
+                            padding: 6px 15px;
+                            width: 1235px;
+                            height: 100%;
+                        }
+                        
+                        .navbar-brand>img {
+                            display: inline;
+                        }
+                        
+                        .navbar-brand img {
+                            width: 4%;
+                            float: left;
+                        }
+                        /* Login button */
+                        
+                        .btn {
+                            font-family: 'Montserrat', sans-serif;
+                            font-size: 11px;
+                            font-weight: 700;
+                            color: #635f69;
+                            background-color: transparent;
+                            text-transform: uppercase;
+                            line-height: 1;
+                            letter-spacing: 1px;
+                            padding: 8px 10px 7px 10px;
+                            margin: 5px 10px;
+                            border: 2px solid #fff;
+                            border-radius: 100px;
+                            -webkit-transition: all .3s;
+                            -moz-transition: all .3s;
+                            -o-transition: all .3s;
+                            -ms-transition: all .3s;
+                            transition: all .3s;
+                        }
+                        
+                        .btn:hover {
+                            border: 2px solid #fff;
+                        }
+                        /* Button Size */
+                        
+                        .btn-sm {
+                            font-size: 9px;
+                            padding: 16px 34px 16px 34px;
+                        }
+                        
+                        .btn-md {
+                            font-size: 11px;
+                            padding: 18px 42px 18px 42px;
+                        }
+                        
+                        .btn-lg {
+                            font-size: 12px;
+                            padding: 18px 43px 18px 43px;
+                        }
+                        
+                        .btn-light {
+                            background-color: #fff;
+                            color: #635f69;
+                            border-color: #fff;
+                        }
+                        
+                        .btn-light:hover {
+                            color: #0c032e;
+                        }
+                        /* Button Shapes */
+                        
+                        .btn-square {
+                            border-radius: 0;
+                        }
+                        
+                        .btn-round {
+                            border-radius: 4px;
+                        }
+                        
+                        .btn-circle {
+                            border-radius: 100px;
+                        }
+                        /* Login Form */
+                        
+                        .form {
+                            text-align: center;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            margin-top: 200px;
+                            margin-left: -190px;
+                        }
+                        
+                        #login {
+                            width: 723px;
+                            height: auto;
+                            float: right;
+                        }
+                        
+                        #login input {
+                            border-radius: 4px;
+                            border: none;
+                            padding: 8px 34px 10px 34px;
+                        }
+                        
+                        input:-webkit-autofill {
+                            -webkit-box-shadow: 0 0 0px 1000px white inset;
+                        }
+                        
+                        #login-button,
+                        #register-button {
+                            outline: 0;
+                        }
+                        /* welcome message */
+                        
+                        #message {
+                            top: 100px;
+                        }
+                        /*REGISTER form*/
+                        /*.user {
+                        width: 90%;
+                        max-width: 340px;
+                        margin: 10vh auto;
+                        font-family: "Roboto";
+                        font-size: 14px;
+                    }*/
+                        
+                        .sign-up {
+                            margin-top: 40px;
+                            border-radius: 6px;
+                            /*overflow: hidden;*/
+                            opacity: 10;
+                            width: 90%;
+                            /*max-width: 340px;*/
+                            margin: 0;
+                            font-family: "Roboto";
+                            font-size: 14px;
+                            float: left;
+                        }
+                        
+                        .form__input {
+                            display: block;
+                            width: 100%;
+                            padding: 20px;
+                            font-family: "Roboto";
+                            -webkit-appearance: none;
+                            color: coral;
+                            background: pink;
+                            border: 0;
+                            outline: 0;
+                            transition: 0.3s;
+                        }
+                        /*color when clicking on field */
+                        
+                        .form__input:focus {
+                            background: #ffdfdf;
+                        }
+                        
+                        .form__group {
+                            height: 50px
+                        }
+                        
+                        #register-button {
+                            display: block;
+                            width: 100%;
+                            padding: 20px;
+                            font-family: "Roboto";
+                            -webkit-appearance: none;
+                            outline: 0;
+                            border: 0;
+                            color: white;
+                            background: #ABA194;
+                            transition: 0.3s;
+                            float: right;
+                        }
+                        
+                        #register-button:hover {
+                            background: #a09486;
+                        }

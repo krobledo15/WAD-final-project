@@ -1,0 +1,19 @@
+#upload {
+    background-color: #E0FFFF;
+    width: 100%;
+    height: calc(100vh);
+    background-position: center center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url(../img/gray-settings.png);
+}
+
+
+/*#my-awesome-dropzone {
+    margin-top: 200px;
+} */
+
+.upload-form {
+    margin-top: 80px;
+    background-color: white;
+}

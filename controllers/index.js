@@ -1,7 +1,6 @@
 const router = require('express').Router()
 const User = require('../models/user.js')
 const Data = require('../models/data.js')
-const BizData = require('../models/bizdata.js')
 const passport = require('passport')
 const multer = require('multer')
 const path = require('path')
@@ -19,6 +18,7 @@ const upload = multer({
 })
 
 
+
 function protect(req, res, next) {
     if (req.isAuthenticated()) {
         return next()
@@ -26,8 +26,8 @@ function protect(req, res, next) {
     res.redirect('/landing')
 }
 
-//Landing Page
-router.get('/', protect, function(req, res) {
+//Landing Page - ADD protect, BEFORE FUNCTION
+router.get('/', function(req, res) {
     return res.redirect('/dashboard')
 
 })
@@ -59,49 +59,73 @@ router.post('/login',
     })
 )
 
-//Dashboard View
-router.get('/dashboard', protect, function(req, res) {
-        res.status(200).send('Worked')
-    })
-    // res.send('Worked')
-    //Log Out Button
+//Dashboard View- ADD protect, BEFORE FUNCTION
+router.get('/dashboard', function(req, res) {
+    return res.render('dashboard')
+    res.status(200).send('Worked')
+})
+
+
+//Log Out Button
 router.get('/logout', function(req, res) {
     req.logout()
     return res.redirect('/landing')
 })
 
-//Upload Redirect Button On Dashboard
-router.get('/upload', protect, function(req, res) {
-    return res.render('upload')
-})
+//Upload Redirect Button On Dashboard- ADD protect, BEFORE FUNCTION
+// router.get('/upload', function(req, res) {
+//     return res.redirect('/upload')
+// })
 
-//Selecting A Pre-Existing File On Dashboard 
-router.get('/file/:id', protect, function(req, res) {
+//Selecting A Pre-Existing File On Dashboard - ADD protect, BEFORE FUNCTION
+router.get('/file/:id', function(req, res) {
     let id = req.params.id
     return res.render('/file/:id')
 })
 
-//Upload View
-router.get('/upload', protect, function(req, res) {
+// Reports View
+router.get('/reports', function(req, res) {
+    return res.render('reports')
+})
+
+//Upload View- ADD protect, BEFORE FUNCTION
+router.get('/upload', function(req, res) {
     return res.render('upload')
+        // return res.sendFile(__dirname + '/upload')
 })
 
 //Upload functionality && Parse Data
 //req.file -> is going to represent the uploaded File buffer
 router.post('/upload', upload.single('data'), function(req, res) {
     let parsedData = Baby.parseFiles(req.file.path, {
-            header: true
-        })
-        // console.log(parsedData)
-        // res.status(200)
-
-    parsedData.save(function(err) {
-        if (err) { console.log(err) } else {
-            res.redirect('/reports');
-        }
+        header: true
     })
 
+    // When you have the protect middleware, you will have access to the req.user property, ADD PROTECT AFTER YOU FINISH TESTING WITH GRAPHS
+    let data = new Data({
+        filename: req.file.filename,
+        filetype: req.body.filetype,
+        reportName: req.body.reportName,
+        userID: 'req.user._id', //This is a placeholder, replace with ACTUAL user id which is passed by passport
+        contents: parsedData.data
+    })
+
+    data.save(function(err) {
+        if (err) {
+            return res.json({ status: 400, error: err })
+        }
+        return res.redirect('/reports')
+    })
 })
+
+// Reports View
+router.get('/reports', function(req, res) {
+    req('data')
+    return res.render('/reports')
+})
+
+
+
 
 
 module.exports = router

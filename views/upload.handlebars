@@ -1,0 +1,38 @@
+
+ 
+<main id="upload">
+  <section class="">
+    <div class="container">
+      <div class="col-xs-12"></div>
+    </div>
+  </section>
+  <br><br>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6  upload-form">
+          <h3><strong>Fill In The Report Details & Upload Your File</strong></h3><br>
+              <form>
+                <div class="form-group">
+                    <label><strong>File Name</strong></label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="File Name">
+                </div>
+                <div class="form-group">
+                    <label><strong>File Type</strong></label>
+                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="A/R, A/P, Sales, etc.">
+                </div>
+                <div class="form-group">
+                    <label><strong>Uploaded By:</strong></label>
+                    <input type="text" class="form-control" placeholder="Your Name">
+                </div>
+                </form>
+          </div>
+          <div class="col-xs-6 dropbox">
+            <form id="uploadForm" action="/upload" enctype="multipart/form-data" method="post">
+            <input type="file" name="data">
+            <input type="submit" value="Upload File" name="submit">
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
