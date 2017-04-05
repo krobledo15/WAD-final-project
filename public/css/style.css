@@ -133,7 +133,7 @@
                         /* welcome message */
                         
                         #message {
-                            top: 100px;
+                            top: -30px;
                         }
                         /*REGISTER form*/
                         /*.user {
